@@ -1,7 +1,7 @@
 const crypto = require('crypto');
 const validator = require('email-validator');
 
-module.exports = (req, res) => {
+const loginValidator = (req, res) => {
   const token = crypto.randomBytes(8).toString('hex');
   const { email, password } = req.body;
   const validatorEmail = validator.validate(email);
@@ -16,3 +16,5 @@ module.exports = (req, res) => {
   }
   return res.status(200).json({ token });  
 };
+
+module.exports = loginValidator;
